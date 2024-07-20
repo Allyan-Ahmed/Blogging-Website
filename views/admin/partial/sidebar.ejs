@@ -1,0 +1,77 @@
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <!-- End Dashboard Nav -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="/category">
+          <i class="bi bi-person"></i>
+          <span>Category</span>
+        </a>
+      </li>
+       <!-- End Category Nav -->
+
+    <li class="nav-item">
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#blog-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+        <i class="bi bi-menu-button-wide"></i><span>Blog</span
+        ><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul
+        id="blog-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+        <li>
+          <a href="/addblog">
+            <i class="bi bi-circle"></i><span>Add</span>
+          </a>
+        </li>
+        <li>
+          <a href="/viewblog">
+            <i class="bi bi-circle"></i><span>View</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- End Blogs Nav -->
+
+    <li class="nav-item">
+        <a
+          class="nav-link collapsed"
+          data-bs-target="#components-nav"
+          data-bs-toggle="collapse"
+          href="#"
+        >
+          <i class="bi bi-menu-button-wide"></i><span>User</span
+          ><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul
+          id="components-nav"
+          class="nav-content collapse"
+          data-bs-parent="#sidebar-nav"
+        >
+          <li>
+            <a href="/adduser">
+              <i class="bi bi-circle"></i><span>Add</span>
+            </a>
+          </li>
+          <li>
+            <a href="/viewuser">
+              <i class="bi bi-circle"></i><span>View</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- End User Nav -->
+  </ul>
+</aside>

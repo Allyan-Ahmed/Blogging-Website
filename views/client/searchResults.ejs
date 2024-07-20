@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <title>Search | Reader | Blog</title>
+
+    <!-- mobile responsive meta -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="description" content="This is meta description" />
+    <meta name="author" content="Themefisher" />
+    <meta name="generator" content="Hugo 0.74.3" />
+
+    <!-- theme meta -->
+    <meta name="theme-name" content="reader" />
+
+    <!-- plugins -->
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css" />
+    <link rel="stylesheet" href="plugins/slick/slick.css" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+
+    <meta property="og:title" content="Reader | Hugo Personal Blog Template" />
+    <meta property="og:description" content="This is meta description" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:updated_time" content="2020-03-15T15:40:24+06:00" />
+  </head>
+  <body>
+    <!-- navigation -->
+    <%- include('partial/navbar.ejs')%>
+    <!-- /navigation -->
+
+    <section class="section-sm" style="margin-top: 20px;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 mb-5 mb-lg-0">
+            <h2 style="margin: 30px;">Search Results for "<%= query %>"</h2>
+
+            <% if (posts.length > 0) { %>
+            <!-- Start of the Blog Card -->
+            <% posts.forEach(post => { %>
+            <article class="card mb-4">
+              <div class="post-slider">
+                <% console.log(post)%> <% if (post.img && post.img.contentType
+                && post.img.data) { %>
+                <img
+                  src="data:image/<%= post.img.contentType %>;base64,
+          <%= post.img.data.toString('base64') %>"
+                  class="card-img-top"
+                  alt="post-thumb"
+                />
+                <% } else { %>
+                <img src="" class="card-img-top" alt="default-thumb" />
+                <% } %>
+              </div>
+              <div class="card-body">
+                <h3 class="mb-3">
+                  <a class="post-title" href=""><%=post.title %></a>
+                </h3>
+                <ul class="card-meta list-inline">
+                  <li class="list-inline-item">
+                    <a href="" class="card-meta-author">
+                      Category: <span><%=post.category %></span>
+                    </a>
+                  </li>
+
+                  <li class="list-inline-item">
+                    <i class="ti-calendar"></i> Posted on: <%= new
+                    Date(post.createdAt).toLocaleDateString() %>
+                  </li>
+                  <li class="list-inline-item">
+                    <ul class="card-meta-tag list-inline">
+                      <% post.keywords.split(',').forEach(function(keyword) { %>
+                      <li class="list-inline-item">
+                        <a href=""><%= keyword.trim() %></a>
+                      </li>
+                      <% }); %>
+                    </ul>
+                  </li>
+                </ul>
+                <p><%=post.description %></p>
+                <a href="" class="btn btn-outline-primary">Read More</a>
+              </div>
+            </article>
+            <% });%> <% } else { %>
+            <p>No results found for "<%= query %>".</p>
+            <% } %>
+
+            <!-- End of the Blog Card -->
+
+            <!-- Pagination -->
+
+            <!-- <ul class="pagination justify-content-center">
+    <li class="page-item page-item active ">
+        <a href="#!" class="page-link">1</a>
+    </li>
+    <li class="page-item">
+        <a href="#!" class="page-link">2</a>
+    </li>
+    <li class="page-item">
+        <a href="#!" class="page-link">&raquo;</a>
+    </li>
+  </ul> -->
+          </div>
+          <aside class="col-lg-4 sidebar-home">
+            <!-- Search -->
+            <div class="widget">
+              <h4 class="widget-title"><span>Search</span></h4>
+              <form ction="/search" method="GET" class="widget-search">
+                <input
+                  class="mb-3"
+                  id="search-query"
+                  name="q"
+                  name="s"
+                  type="search"
+                  placeholder="Type &amp; Hit Enter..."
+                />
+                <i class="ti-search"></i>
+                <button type="submit" class="btn btn-primary btn-block">
+                  Search
+                </button>
+              </form>
+            </div>
+
+            <!-- Search -->
+
+            <!-- categories -->
+            <div class="widget widget-categories">
+              <h4 class="widget-title"><span>Categories</span></h4>
+              <ul class="list-unstyled widget-list">
+                <% let count=1; categories.forEach(cat => { %>
+
+                <li>
+                  <a href="" class="d-flex"
+                    ><%= cat.name %><small class="ml-auto"
+                      >(<%= cat.count %>)</small
+                    ></a
+                  >
+                </li>
+                <% }); %>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <%-include('partial/footer.ejs')%>
+
+    <!-- JS Plugins -->
+    <script src="plugins/jQuery/jquery.min.js"></script>
+
+    <script src="plugins/bootstrap/bootstrap.min.js"></script>
+
+    <script src="plugins/slick/slick.min.js"></script>
+
+    <script src="plugins/instafeed/instafeed.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
